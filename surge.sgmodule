@@ -1,5 +1,5 @@
 [MITM]
-hostname = sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, ifac*.iqiyi.com, nebula.kuaishou.com, mp.weixin.qq.com, *.amemv.com, ms.jr.jd.com, %INSERT% api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, weibointl.api.weibo.cn, %APPEND% ios.prod.ftl.netflix.com, %APPEND% *.amemv.com
+hostname = activity-1.m.duiba.com.cn, sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, ifac*.iqiyi.com, nebula.kuaishou.com, mp.weixin.qq.com, *.amemv.com, ms.jr.jd.com, %INSERT% api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, weibointl.api.weibo.cn, %APPEND% ios.prod.ftl.netflix.com, %APPEND% *.amemv.com
 [Script]
 # 京东游戏
 直播红包雨 = type=cron,cronexp="0 0,9,11,13,15,17,19,20,21,23 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_live_redrain.js
@@ -93,7 +93,7 @@ bilibili银瓜子转硬币 = type=cron,cronexp="10 0 0 * * *",script-path=https:
 
 SFcookie= type=http-request,pattern=^https:\/\/sf-integral-sign-in.weixinjia.net\/app\/index,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.cookie.js
 SFcookie= type=http-request,pattern=^https:\/\/mcs-mimp-web.sf-express.com\/mcs-mimp\/share\/(.*?)Redirect,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.cookie.js
-顺丰速运 = type=cron,cronexp=20 1 0 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.js,script-update-interval=0
+顺丰速运 = type=cron,cronexp="*/10 * * * * *",script-path=scripts/sfexpress.js
 # [MITM] sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com
 # 再配置重写规则:
 # Surge: 把两条远程脚本放到[Script]
@@ -104,25 +104,18 @@ SFcookie= type=http-request,pattern=^https:\/\/mcs-mimp-web.sf-express.com\/mcs-
 # 第 1 条脚本是用来获取 cookie 的, 用浏览器访问一次获取 cookie 成功后就可以删掉或注释掉了, 但请确保在登录成功后再获取 cookie.
 # 第 2 条脚本是签到脚本, 每天00:00:10执行一次.
 
-
-海底捞 = type=cron,cronexp=25 3 0 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/haidilao/hdl.js,script-update-interval=0
-# 海底捞
-# 打开APP 然后手动签到 1 次
-
-
-电信余额提醒=type=cron,cronexp=10 12 12 * *,wake-system=1,script-path=https://raw.githubusercontent.com/id77/QuantumultX/master/task/10000.js
-# > 电信余额提醒(By id77)
-# 进入【天翼账号中心】公众号 点 查询充值-查余额
-
-
-饿了么 = type=cron,cronexp=35 4 0 * * *,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js,script-update-interval=0
-饿了么-打卡领红包= type=cron,cronexp=35 4 0 * * *,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/elem/elemCheckIn.js
-# > 饿了么   (By @syzzzf)
-# 打开 APP, 访问下`我的`>`签到领红包`(左上角)
-
+ 海底捞cookie = type=http-request,pattern=^https:\/\/activity-1\.m\.duiba\.com\.cn\/signactivity\/doSign$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/haidilao/hdl.js
+ 海底捞 = type=cron,cronexp="10 0 0 * * *",script-path=script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/haidilao/hdl.js
+# 先把activity-1.m.duiba.com.cn加到[MITM]
+# 再配置重写规则:
+# Surge: 把两条远程脚本放到[Script]
+# QuanX: 把hdl.js传到On My iPhone - Quantumult X - Scripts (传到 iCloud 相同目录也可, 注意要打开 quanx 的 iCloud 开关)
+# 打开 APP海底捞 然后手动签到 1 次, 系统提示: 获取Cookie: 成功
+# 最后就可以把第 1 条脚本注释掉了
+# 运行一次脚本, 如果提示重复签到, 那就算成功了!
+# 第 1 条脚本是用来获取 cookie 的, 用浏览器访问一次获取 cookie 成功后就可以删掉或注释掉了, 但请确保在登录成功后再获取 cookie.
+# 第 2 条脚本是签到脚本, 每天00:00:10执行一次.
 
 Epic周免= type=cron,cronexp=0 8 */7 * *,script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/epic.js
 # > Epic周免(By Peng-YM)
 
-PSN会免= type=cron,cronexp=0 9 1 * *,script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/psn.js
-# > PSN会免(By Peng-YM)
