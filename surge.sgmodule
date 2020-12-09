@@ -2,7 +2,7 @@
 #!desc=Epic周免、什么值得买、网易云签到、bilibili、v2ex-无需boxjs JD、机场、电信、联通 淘宝+JD比价
 
 [MITM]
-hostname = hostname = activity-1.m.duiba.com.cn, api.huke88.com, *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, *.amemv.com, ms.jr.jd.com
+hostname = hostname = api.huke88.com, *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, *.amemv.com, ms.jr.jd.com
 [Script]
 # 京东游戏
 进店领豆 = type=cron,cronexp="10 0 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_shop.js
@@ -106,9 +106,6 @@ bilibili银瓜子转硬币 = type=cron,cronexp="10 0 0 * * *",script-path=https:
 # 最后就可以把第 1 条脚本注释掉了
 # 第 1 条脚本是用来获取 cookie 的, 用浏览器访问一次获取 cookie 成功后就可以删掉或注释掉了, 但请确保在登录成功后再获取 cookie.
 # 第 2 条脚本是签到脚本, 每天00:00:10执行一次.
-
-海底捞cookie= type=http-request,pattern=^https:\/\/activity-1\.m\.duiba\.com\.cn\/signactivity\/doSign$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/haidilao/hdl.js
-海底捞签到= type=cron,cronexp="10 0 0 * * *",script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/haidilao/hdl.js
 
 虎课网 = type=cron,cronexp=0 9 * * *,script-path=https://raw.githubusercontent.com/58xinian/Surge/master/Script/huke.js
 虎课网cookie = type=http-request,pattern=^https:\/\/api\.huke88\.com\/v5\/activity\/sign,script-path=https://raw.githubusercontent.com/58xinian/Surge/master/Script/huke.js
