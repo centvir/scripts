@@ -2,7 +2,7 @@
 #!desc=Epic周免、什么值得买、网易云签到、bilibili、v2ex-无需boxjs JD、机场、电信、联通 淘宝+JD比价
 
 [MITM]
-hostname = api.weibo.cn, mapi.weibo.com, *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, *.amemv.com, ms.jr.jd.com
+hostname = *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, *.amemv.com, ms.jr.jd.com
 [Script]
 # 京东游戏
 进店领豆 = type=cron,cronexp="10 0 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_shop.js
@@ -51,6 +51,13 @@ hostname = api.weibo.cn, mapi.weibo.com, *.smzdm.com, music.163.com, *.bilibili.
 淘宝比价1 = type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,script-update-interval=0
 淘宝比价2 = type=http-request,pattern=^http://.+/amdc/mobileDispatch,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,script-update-interval=0
 
+NASA每日一图 = type=cron,cronexp=0 0 6 * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/nasa/nasapic.js
+# 功能特点
+# 首先前往https://api.nasa.gov/ 申请一个 API，秒通过。
+# 将申请好的 API 填入 BoxJs。
+# 可以选择输出中文还是英文。
+# 点击通知可以打开浏览器图片-保存。
+
 v2ex = type=http-request,pattern=^https:\/\/www\.v2ex\.com\/mission\/daily,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/v2ex/v2ex.cookie.js
 v2ex签到 = type=cron,cronexp="10 0 0 * * *",script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/v2ex/v2ex.js
 # 先把*.v2ex.com加到[MITM]
@@ -98,14 +105,4 @@ bilibili银瓜子转硬币 = type=cron,cronexp="10 0 0 * * *",script-path=https:
 
 Epic周免= type=cron,cronexp=0 8 */7 * *,script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/epic.js
 # > Epic周免(By Peng-YM)
-
-NASA每日一图 = type=cron,cronexp=0 0 6 * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/nasa/nasapic.js
-# 功能特点
-# 首先前往https://api.nasa.gov/ 申请一个 API，秒通过。
-# 将申请好的 API 填入 BoxJs。
-# 可以选择输出中文还是英文。
-# 点击通知可以打开浏览器图片-保存。
-iDaily每日环球视野 = type=cron,cronexp=0 0 6 * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/idaily/idaily.js
 热门监控 = type=cron,cronexp=30 0 8-22/2 * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/hotsearch/hot.js
-微博超话 = type=cron,cronexp=5 0  * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/weibo/weibotalk.js
-微博超话获取Cookie = type=http-request,pattern=^https?://m?api\.weibo\.c(n|om)\/2\/(cardlist|page\/button),script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/weibo/weibotalk.cookie.js
