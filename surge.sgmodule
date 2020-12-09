@@ -2,7 +2,7 @@
 #!desc=Epic周免、什么值得买、网易云签到、bilibili、v2ex-无需boxjs JD、机场、电信、联通 淘宝+JD比价
 
 [MITM]
-hostname = hostname = as.xiaojukeji.com, api.huke88.com, *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, *.amemv.com, ms.jr.jd.com
+hostname = hostname = api.huke88.com, *.smzdm.com, music.163.com, *.bilibili.com, *.v2ex.com, trade-acs.m.taobao.com, api.m.jd.com, act.10010.com, m.client.10010.com, wapside.189.cn:9001, *.amemv.com, ms.jr.jd.com
 [Script]
 # 京东游戏
 进店领豆 = type=cron,cronexp="10 0 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_shop.js
@@ -51,6 +51,10 @@ hostname = hostname = as.xiaojukeji.com, api.huke88.com, *.smzdm.com, music.163.
 淘宝比价1 = type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,script-update-interval=0
 淘宝比价2 = type=http-request,pattern=^http://.+/amdc/mobileDispatch,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,script-update-interval=0
 
+
+Epic周免= type=cron,cronexp=0 8 */7 * *,script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/epic.js
+# > Epic周免(By Peng-YM)
+热门监控 = type=cron,cronexp=30 0 8-22/2 * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/hotsearch/hot.js
 NASA每日一图 = type=cron,cronexp=0 0 6 * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/nasa/nasapic.js
 # 功能特点
 # 首先前往https://api.nasa.gov/ 申请一个 API，秒通过。
@@ -106,11 +110,3 @@ bilibili银瓜子转硬币 = type=cron,cronexp="10 0 0 * * *",script-path=https:
 虎课网 = type=cron,cronexp=0 9 * * *,script-path=https://raw.githubusercontent.com/58xinian/Surge/master/Script/huke.js
 虎课网cookie = type=http-request,pattern=^https:\/\/api\.huke88\.com\/v5\/activity\/sign,script-path=https://raw.githubusercontent.com/58xinian/Surge/master/Script/huke.js
 
-滴滴出行 = type=cron,cronexp="0 1,20 * * *",wake-system=1,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_new.js
-滴滴出行APPCookie = type=http-request,pattern=^https:\/\/as\.xiaojukeji\.com\/ep\/as\/toggles\?,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_new.js
-滴滴出行小程序Cookie = type=http-request,pattern=^https:\/\/common\.diditaxi\.com\.cn\/webapp\/config\/sidebar\?,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_new.js
-# 获取完 Token 后可不注释 rewrite / hostname，Token 更新时会弹窗。若因 MitM 导致该软件或小程序网络不稳定，可注释掉 hostname。
-
-Epic周免= type=cron,cronexp=0 8 */7 * *,script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/epic.js
-# > Epic周免(By Peng-YM)
-热门监控 = type=cron,cronexp=30 0 8-22/2 * * *,script-path=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/hotsearch/hot.js
