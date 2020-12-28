@@ -102,6 +102,3 @@ bilibili银瓜子转硬币 = type=cron,cronexp="10 0 0 * * *",script-path=https:
 # 第 1 条脚本是用来获取 cookie 的, 用浏览器访问一次获取 cookie 成功后就可以删掉或注释掉了, 但请确保在登录成功后再获取 cookie.
 # 第 2 条脚本是签到脚本, 每天00:00:10执行一次.
 
-虎课网 = type=cron,cronexp=0 9 * * *,script-path=https://raw.githubusercontent.com/58xinian/Surge/master/Script/huke.js
-虎课网cookie = type=http-request,pattern=^https:\/\/api\.huke88\.com\/v5\/activity\/sign,script-path=https://raw.githubusercontent.com/58xinian/Surge/master/Script/huke.js
-
